@@ -17,12 +17,15 @@ void Stack::push(int value) {
   // copy all elements to new stack
   // delete old stack
   // point old stack pointer to new stack
-  /*if(top>=maxSize) {
-    int* temp = new int[maxSize*2];
+  int* holder = theStack;
+  if(top>=maxSize) {
+    theStack = new int[maxSize*2];
     for(int i=0; i<top; i++) {
-      
+      theStack[i] = holder[i];
     }
-  }*/
+    delete[] holder;
+    maxSize = 2*maxSize;
+  }
   theStack[top] = value;
   top++;
 }

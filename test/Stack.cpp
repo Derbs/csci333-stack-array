@@ -13,12 +13,18 @@ TEST(StackTest, Push) {
 }
 TEST(StackTest, Resize) {
   Stack* stk = new Stack(5);
-  for(int i = 0; i < 4; i++) {
+  for(int i = 0; i <= 4; i++) {
     stk->push(i);
+    EXPECT_EQ(5, stk->getMaxSize());
   }
-  EXPECT_EQ(4, stk->size());
-  EXPECT_EQ(5, stk->getMaxSize());
-  stk->push(4);
-  EXPECT_EQ(10, stk->getMaxSize());
+  EXPECT_EQ(5, stk->size());
+  stk->push(5);
+  
+  EXPECT_EQ(10, stk->getMaxSize());  //tests to make sure stack has been properly resized
+
+  //tests to make sure values have been transferred!
+  for(int i = stk->size(); i==0; i--) {
+    EXPECT_EQ(i, stk->pop());
+  }
 }
 
