@@ -14,7 +14,6 @@ class Stack {
   int pop();
   int peek();
   int size();
-  int getMaxSize();
 };
 
 
